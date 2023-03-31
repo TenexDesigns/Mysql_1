@@ -49,7 +49,7 @@ In mySql, we have to create a table and then inside the table , we have to name 
   hourly_pay DECIMAL(5,2),// Here we can expect the pay to be in decimal numbers ,so the decimal can have 5 digits but ,we give it a precision of 2 numbers
   hire_data DATE  // There is a date data type
 
-)
+);
 
 
 
@@ -66,10 +66,51 @@ Here we can rename our table called emplyoyees to workers
 ----> RENAME TABLE employees TO workers
 
 
+TO DROP OR DELETE A TABLE 
+
+-----> DROP TABLE employess
+
+
+TO ALTER A TABLE e.g add a new column to the table
+
+-------> ALTER TABLE employees ADD phone_number INT;
 
 
 
 
+TO RENAME A COLUMN IN A TABLE
+
+How ever on renaming the column on the table, the data type does not change, it is style of type INT.
+
+-------> ALTER TABLE employees RENAME COLUMN phone_number TO email;
+
+
+
+TO CHANGE THE DATATYPE OF A COLUMN IN  A TABLE 
+Here we change the data type of email from the previous datatype , which was INT , to the new datatype VARCHAR , which is a colllection of characters with a limit of 100 characters
+
+
+-------> ALTER TABLE employees MODIFY COLUMN email VARCHAR(100);
+
+
+
+
+TO CHANGE THE POSITION OF ONE OF OUR COLUMNS ,WE DO IT LIKE THIS 
+
+Here we change the position of our email column to come afte the last_name column.
+We have to include the data type of the coumn we are moving .
+
+------> ALTER TABLE employees MODIFY email VARCHAR(100) AFTER last_name ;
+
+ How ever if you just want the column to be first, you can simply put the  key word first,
+
+------> ALTER TABLE employees MODIFY email VARCHAR(100) FIRST;
+
+
+
+TO DROP A COLUMN OR TO DELETE A COLUMN
+
+---------> ALTER TABLE employees DROP COLUMN email;
 
 
 
