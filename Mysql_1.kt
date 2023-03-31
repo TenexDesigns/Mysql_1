@@ -116,18 +116,81 @@ TO DROP A COLUMN OR TO DELETE A COLUMN
 
 
 
+INSERTING DATA INTO ROWS OF TABLES 
+________________________________________________________________________________________________________
+
+
+ To insert data into rows of tables you have to give values of the the specified data type.
+Here is an example to insert data into the folwing Eemployees table 
+
+
+ -----> INSERT INTO employees VALUES (1,"eugune","Krabs",25.50,"2024-01-23")
 
 
 
 
 
+TO INSERT MULTIPLE ROWS AT THE SAME TIME
+
+------> INSERT INTO employees VALUES (1,"eugune","Krabs",25.50,"2024-01-23") 
+                                     (2,"Spongebob","Squarepants",12.50,"2020-11-25")
+                                     (3,"Patrick","Star",12.50,"2023-01-07")
+                                     (4,"Squidward","Tentackes",15.00,"2024-06-19")
 
 
 
+                                     
+To insert data into selected columns and leave other columns empty
+You have  to name the columns that you want to contain data in the parenthesis of the table name 
+This puts a value of null in the values where ,we have not put values
+
+
+------> INSERT INTO employees(employee_id,firstname,last_name) VALUES (1,"eugune","Krabs") 
 
 
 
+TO SELECT DATA FROM SPCIFIC COLUMNS IN OUR TABLE
+This will only show us data from the frist_name and last_name columns
 
+-------> SELECT first_name,last_name FROM employees
+
+
+TO SELECT SPECIFIC AREAS OF OUR DATA ,WE CAN USE THE WHERE CLAUSE
+This retuns a list of all employess with an id of 2.
+
+-------> SELECT * FROM employees WHERE employee_id =2 ;
+
+We can also query our selection based on some condition
+This returns a list ofemployess with an hourly rate greater than 15
+
+
+------> SELECT * FROM employees WHERE houry_pay >= 15;
+
+
+We can also make our query select data based on date.
+This selects the list of employees who were hired on a date equal to or before the third of january 2023.
+
+-------> SELECT * FROM employees WHERE hire_date <= "2023-01-03";
+
+
+WE ALSO HAVE THE NOT EQUAL OPERATOR !=
+  This returns a list of all employees whose id is not 1.
+  
+  SELECT * FROM employees WHERE employee_id != 1;
+
+
+TO SELECT DATA WHICH MAY HAVE A NULL VALUE IN THE COLUMN
+ This selects all the rows where the hire_date may not be assigned
+
+
+----> SELECT * FROM employees WHERE hire_data IS NULL;
+
+
+This returns a list where all the employees have a hire date
+
+----> SELECT * FROM employees WHERE hire_data IS NOT  NULL;
+  
+  
 
 
 
