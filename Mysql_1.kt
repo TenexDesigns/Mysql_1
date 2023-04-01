@@ -150,12 +150,20 @@ This puts a value of null in the values where ,we have not put values
 
 
 TO SELECT DATA FROM SPCIFIC COLUMNS IN OUR TABLE
+_______________________________________________________________________________________________________________________________________________________________
+
+
 This will only show us data from the frist_name and last_name columns
 
 -------> SELECT first_name,last_name FROM employees
 
+We can also change the order in which the return columns are arranged
+
+-------> SELECT last_name,first_name FROM employees  // This returns the last_name as the first column
+
 
 TO SELECT SPECIFIC AREAS OF OUR DATA ,WE CAN USE THE WHERE CLAUSE
+
 This retuns a list of all employess with an id of 2.
 
 -------> SELECT * FROM employees WHERE employee_id =2 ;
@@ -180,6 +188,7 @@ WE ALSO HAVE THE NOT EQUAL OPERATOR !=
 
 
 TO SELECT DATA WHICH MAY HAVE A NULL VALUE IN THE COLUMN
+
  This selects all the rows where the hire_date may not be assigned
 
 
@@ -189,6 +198,56 @@ TO SELECT DATA WHICH MAY HAVE A NULL VALUE IN THE COLUMN
 This returns a list where all the employees have a hire date
 
 ----> SELECT * FROM employees WHERE hire_data IS NOT  NULL;
+
+
+
+
+
+HOW TO UPDATE AND DELETE DATA FROM A TABLE
+_______________________________________________________________________________________________________________________________________________________________
+To update data in a table we use
+
+---------> UPDATE employees SET hourly_pay =10.25 WHERE employee_id = 6;
+
+
+TO UPDATE MULTIPLE SETS OF DATA ,JUST SEPARATE THE DATA WITH A COMMA
+
+Here we update the information of one employees whose id is 6.We update his hire date and his hourly pay.
+
+---------> UPDATE employees SET  hourly_pay = 10.56, hire_date = "2023-01-07" WHERE employee_id = 6;
+
+TO SET A VALUE EQUAL TO NULL
+We hust set it to null
+
+----------> UPDATE employees SET hourly_pay = NULL WHERE employee_id = 6;
+
+
+TO UPDATE THE VALUE FOR THE WHOLE COLUMN INTO ONE VALUE,WE EXCLUDE THE WHERE CLAUSE
+This will set alll values in the hourly_pay column equal to 12.45
+
+----------> UPDATE employees SET hourly_pay = 12.45 ;
+
+
+
+TO DELETE A ROW FROM A TABLE
+________________________________________________________________________________
+ To delete a row from a table ,use a WHERE clause, because else it will delete all of your rows.
+
+
+This will delete the row whose employeee id is  6
+
+-------> DELETE FROM employees WHERE employee_id = 6
+
+DO NOT DO THIS AS IT WILL DELETE ALL OF YOUR ROWS IN YOU TABLE
+
+-------> DELETE FROM employees
+
+
+
+
+
+
+
   
   
 
