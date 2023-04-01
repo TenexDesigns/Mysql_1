@@ -339,15 +339,62 @@ Here you use the ADD CONSTARINT UNIQUE  and then add the column name in the  par
 
 ALTER TABLE products ADD CONSTRAINT UNIQUE (product_name)
 
-  
+
+
+
+
+THE NOT NULL CONSTARAINT
+___________________________________________________________________________________________________________________________________________________________
+
+
+This not null constant ensures that there is no null value in that column
+
+To add the NOT NULL constartinet when creating a table
+
+CREATE TABLE products (
+  products_id INT,
+  product_name VARCHAR(),
+  price DECIMAL(4,2) NOT NULL // This means that ther is supposed to be no null value in this column.
+
+)
+
+
+To add the NOT NULL constrainet to an already created column.
+
+ALTER TABLE  products MODIFY price DECIMAL(4,2) NOT NULL;
+It can be zero but it cant be null
+
 
   
 
+  THE CHECK CONSTRAINET
+____________________________________________________________________________________________________________________________---
+
+The check constraint is used to limit what values can be put in a column.
+In this example it can be used to ensure that the values put in the hourly_pay are above 10.00
+
+
+CREATE TABLE employees (
+  employee_id INT,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  hourly_pay DECIMAL (5,2),
+  hire_date DATE,                   // We use this constarint to ensure that all values in the hourly_pay are above 10.00
+  CONSTRAINT check_hourly_Pay CHECK (hourly_pay >= 10.00)  // This is the check constatint. We have given it a name of check_hourly_pay ,so that we can easily identfy this constrainet
+
+)
+
+
+TO ADD A CHECK CONSTARINT TO A TABLE THAT ALREADY EXISTS.
+
+---------> ALTER TABLE employees ADD CONSTRAINT chk_hourly_pay CHECK(hourly_pay >= 10.00);
 
 
 
+TO DELETE A CHECK, YOU DO SO IN THE FOLLOWING MANNER
+You pass in the name you gave to your check
 
-
+-------> ALTER TABLE employees DROP CHECK check_houlr_pay;
 
 
 
