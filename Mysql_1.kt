@@ -275,7 +275,72 @@ TO MAKE A CHANGE A N SAVE IT
 This saves the changes we made above.
 
 
+
+
+
+
+GETTING CURRENT DATE AND TIME IN MYSQL
+____________________________________________________________________________________________________________________________________
+
+Here we create a table called test and give it three colmns of my_date,my_time and my_date time
+To get the date we use CURRENT_DATE()
+To get the time we use CURRENT_TIME()
+To get the dateTime we user NOW()
+
+
+
+ CREATE TABLE test(
+      my_date DATE,
+      my_time TIME,
+      my_datetume DATETIME
+ );
   
+
+
+Then to insert data into the above created columns
+
+-------> INSERT INTO test VALUES (CURRENT_DATE(), CURRENT_TIME(),NOW())
+
+HERE WE CAN EVEN MAKE SOME VALUES NULL
+
+-------> INSERT INTO test VALUES (CURRENT_DATE(), NULL,NULL)
+
+HERE WE CAN EVEN MAKE THE DATE TODE BE TOMMROW BY ADDING 1 TO THE CUURENT DATE
+
+INSERT INTO test VALUES (CURRENT_DATE() + 1 , null ,null)
+
+You can do the same with your time,by either adding or subtracting the time.
+
+
+
+
+
+
+THE UNIQUE CONSTRATNT
+_____________________________________________________________________________________________________________________________________________________
+  
+
+This ensures all alues in a column are all different and unique.
+We can add this constraint when we create a table or after.
+
+ADDDING UNIQUE CONSTRAINT WHEN CRATING COLUMN.
+
+CREATE TABLE products (
+  product_id INT,
+  product_name VARCHAR(25)  UNIQUE, // This means that no two product names can be the same. They all have to different 
+  price DECIMAL(4,2)
+
+
+)
+
+ADDING UNIQUE CONSTRAINT AFTER YOU HAVE CREATED A COLUMN
+
+Here you use the ADD CONSTARINT UNIQUE  and then add the column name in the  parenthesis.
+
+ALTER TABLE products ADD CONSTRAINT UNIQUE (product_name)
+
+  
+
   
 
 
