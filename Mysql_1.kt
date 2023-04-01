@@ -371,6 +371,7 @@ It can be zero but it cant be null
 ____________________________________________________________________________________________________________________________---
 
 The check constraint is used to limit what values can be put in a column.
+It is used to limit what values can be placed inside a column.
 In this example it can be used to ensure that the values put in the hourly_pay are above 10.00
 
 
@@ -401,6 +402,42 @@ You pass in the name you gave to your check
 
 
 
+THE DEFAULT CONSTRAINT
+____________________________________________________________________________________________________________________________________________________________
+This inserts a default value into the the column ,unless we change it manualy.
+This can be used to overcome repetitive vlaue which arre the same in each row.
+Here is an example
+//Here all the values of the price column are the same an repetitive.
+
+INSERT INTO products VALUES (104,"Starw",0.00),
+                            (105,"napkin",0.00),
+                            (106,"fork",0.00),
+                            (107,"spoon",0.00);
+
+
+TO ADD THE DEFAULTS CONSTRAINT WHEN CREATING THE TABLE AND ASSIGN A VALUE
+
+CREATE TABLE products (
+  
+  product_id INT,
+  product_name VARCHAR(25),
+  price DECIMAL(4,2)  DEFAULT 0.00 // Here is where we put the default valu of the price column
+
+
+)
+
+
+TO ALTER A TABLE TO INCLUDE THE DEFAULT CONSTRIANT
+
+-------> ALTER TABLE products ALTER price SET DEFAULTS 0.00;
+
+After doing this ,when we come to inserting values , we can do the following
+This will put the default value as 0.00  unless we overide the default value.
+
+INSERT INTO products (product_id,product_name) VALUES  (104,"Starw"),
+                                                       (105,"napkin"),
+                                                       (106,"fork"),
+                                                       (107,"spoon",5.67);
 
 
 
@@ -410,10 +447,81 @@ You pass in the name you gave to your check
 
 
 
+PRIMARY KEYS IN MYSQL
+_____________________________________________________________________________________________________________________________________________________________
+
+The orimay key is used on a column where each value must be UNIQUE   and NOT NULL.
+A table can only have one primay key constraint.
+
+
+Here is how we add a primary key when creating a table.
+                                                      
+-----> CREATE TABLE  transactions(
+                            transaction_id INT PRIMARY KEY,   //Here we put our primary key.
+                            amount DECIMAL(5,2)
+                             );
+
+
+
+HERE IS HOW TO ADD A PRIMARY KEY CONSTARINT TO AN ALREADY EXISTING TABLE.
+
+                                                     // Here we add the column name that we would like to have our primary key
+ALTER TABLE transactions ADD CONSTRAINT PRIMARY KEY (transaction_id);
+
+
+to insert data as seen above 
+
+INSERT INTO transactions VALUES (1001,4.99)//ALLOWED
+INSERT INTO transactions VALUES (1002,4.99)//ALLLOWED
+INSERT INTO transactions VALUES (1001,4.99)//NOT ALLOWED AS PRIMARY KEY HERE IS REPEADTED AND HENCE NOT UNIQUE
+INSERT INTO transactions VALUES (NULL,4.99)//NOT ALLOWED AS THE PRIMARY KEY CAN NOT BE NULL.
+
+ 
+
+
+
+THE AUTOINCREMENT ATTRIBUTE IN MYSQL
+___________________________________________________________________________________________________________________________________________________
+
+The autoincrement constraint can be set on a column that has been made to be a PRIMARY KEY.
+When ever we insert a newrow. Our primary key can be autopoplated automaticaly.
+By default the autoincrement value is set to 1
+
+CREATE TABLE transactions (
+  transaction_id INT PRIMARY KEY AUTO_INCREMENT,// The auto increment can only be set on a column which is the primary key.
+  amount DECIMALS(5,2)
+
+
+
+)
+
+TO INSERT DATA INTO THE ABOVE TABLE
+//The transactions will be increased automaticay from one,,so here we have to specify what value we are providing for.
+INSERT INTO transactions (amount) VALUES (4.99)(5.77);
 
 
 
 
+WILL GIVE OUT ----> transation_id    amount
+                          1          4.99
+                          2          5.77
+
+
+WE CAN ALSO SET OUR AUTOINCREMENT VALUE TO INCREASE FROM ANOTHER NUMBER.
+
+ALTER TABLE transactions AUTO_INCREMENT = 1000;
+
+When we do this, our primay key will auto_increment from 1000
+
+
+INSERT INTO transactions (amount) VALUES (4.99)(5.77);
+
+
+
+
+WILL GIVE OUT ----> transation_id    amount
+                          1001          4.99
+                          1002          5.77
 
 
 
