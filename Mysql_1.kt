@@ -245,7 +245,34 @@ DO NOT DO THIS AS IT WILL DELETE ALL OF YOUR ROWS IN YOU TABLE
 
 
 
+SAVE YOUR WORK MANUALRY USING AUTOCOMMIT ,COMMIT ,ROLLBACK
+_________________________________________________________________________________________________________________________________________________________
+BY DEFAUTL. AUTOCOMMIT IS ON.
+The autocommit automaticaly saves your changes to the datasave.This even includes deleting your whole rows.
+To avoid such a cercamstance you can be manualy saving your work .
+First you turn off the autocommit.
 
+--------> SET AUTOCOMMMIT = OFF;
+With this,our transactins will not be saved aoutomaticaly,
+We would manualy need to save each transaction. This creates a safe point
+To create a safe point type in the word commit
+
+----->COMMIT
+
+Maybe in our workings wwe can accidenataly delete all of our rows e.g DELETE FROM employees;
+
+Luckyly we create a safe point with that commit statement . Meaning all chages we made to our data upto that point where we typred commit ,those chages have not take effect yet
+and we can use the ROLLBACK keyword to go back to the data we had at the point we used commit.
+
+----->ROLLBACK 
+This wii restor our transactions to the previous safe point ,which is commit.
+
+
+TO MAKE A CHANGE A N SAVE IT 
+
+-----> DELETE FROM employees WHERE employee_id =6;
+------> COMIT
+This saves the changes we made above.
 
 
   
