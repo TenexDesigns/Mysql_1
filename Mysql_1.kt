@@ -532,3 +532,324 @@ WILL GIVE OUT ----> transation_id    amount
 
 
 
+FOREIGN KEYS IN MYSQL.
+____________________________________________________________________________________________________________________________________________________________________
+
+Foreign key is a primary key on one table that can be found on a different table.
+Using a foreign key, we can establish a link between two tables.
+Mysql prevents any action that will destroy that link between them.
+
+LET US CRATE TWO TABLES
+This is the cstomers table ,with the customers_id as the primary key.
+
+CREATE TABLE customers (
+   customer_id INT PRIMARY KEY AUTO_INCREMENT,
+   firt_name VARCHAR(50),
+   last_name VARCHAR(50)
+
+
+);
+
+Here let us populate our customers table.
+INSERT INTO customers(first_name,last_name)VALUES ("Fred","Fish"),("Larry","Lobster"),("Bubble","Bass");
+
+This will be the result.
+
+customer_id     first_name          last_name
+1                 "Fred",          "Fish"
+2                 "Larry",         "Lobster"
+3                 "Bubble",        "Bass"
+
+
+LET US CREATE A SECOND TABLE,AND USE THE CUSTOMERS ID(which is a primary key of our first table) TO CREATE A FOREIGN KEY BY USING IT ,IN THIS SECOND TABLE
+
+CREATE TABLE transactions (
+  
+  transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+  amount DECIMALS(5,2),
+  customer_id INT, //This is the foreign key.We create a column in the second table and give it the same name as the column with the primary key in the first table
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)  //Here we make sure theres a connectio between our first table and our second table.
+      //Here we tell mysql that the foreign key is the customers_id and then refer to the customer Id column in the second table.     
+
+
+
+);
+
+To find any active foreign keys in mySql, go to that table and in the dropdown menu ,there is a foreign keys option.Enlarge it and see if there are any foreih=gn keys.
+The  forein key will be given a random name , that starts with the table name e.g  transactions_ibfk_1
+
+
+
+TO DROP A FOREIGN KEY,JUST USE ITS NAME, GIVEN IN THE FOREIGN KEYS DROP DOWN MENU OF THE SELECTED TABLE.
+
+-------------> ALER TABLE transactions DROP FOREIGN KEY transactions_ibfk_1;
+
+
+
+ADD A NAMED FOREIGN KEY TO AN EXISTIN TABLE
+To apply a foreign key to a table that already exists 
+
+-------> ALTER TABLE traansactions ADD CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+
+You dont need to neccesary name the foreign key, so you can remove the quoted part if you want
+-------> ALTER TABLE traansactions " FOREIGN KEY (customer_id)" REFERENCES customers(customer_id)
+
+
+TO INSERT DATA INTO OUR SECOND TABLE
+
+
+INSERT INTO  transactions (amount,customer_id) VALUES (4.99,3),
+                                                      (2.89,2),
+                                                      (3.38,3),
+                                                      (3.24,1),
+
+
+
+This will be the result.
+Here we can see that the first and the third transaction were made by the same customer. So if we go to our customers table and search for the customer with an Id of three. Then we can know who it is
+This is how foreign keys work.They link up information in two tablses to show a relationship.We now have a link beteen our transactions table and our customers table.
+My sql will prevent any actions that wll destroy that link between them, unless we explicity drop that foreign key constraint.
+
+transaction_id     amount          customer_id
+1                 4.99,            3
+2                 2.89,            2
+3                 3.38,            3
+4                 3.24,            1
+
+My sql will prevent any actions that wll destroy that link between them, unless we explicity drop that foreign key constraint.
+Let us give it a try here
+-----> DELETE FROM customers WHERE customers_id = 3
+This above here is prohibited. Since this will ruin the established connection betwen the two tables
+"cannot delete or update parent row .foreing key constraint fails"---> Is the erroe message gotten.
+
+
+That is a foreign key. It is a priamry key of one table found on another table.and when we use that foreign key in another table, we refer to it as a foreign key.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
