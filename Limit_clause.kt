@@ -56,6 +56,36 @@ SELECT * FROM customers LIMIT 10;
 Note that the OFFSET parameter is optional, and if it is not specified,
 the default value is 0, which means that the query will start returning rows from the beginning.
 
+____________________________________________________
+
+
+The LIMIT clause is commonly used with pagination to limit the number of rows returned by a query to a specific page size,
+and to specify which page of the result set to display.
+
+For example, if you have a table called products with 1000 rows and you want to display 10 rows per page, 
+you can use the following SQL query to retrieve the products for the first page:
+
+
+SELECT * FROM products LIMIT 10 OFFSET 0;
+
+
+This query will return the first 10 products from the products table.
+
+To retrieve the products for the second page, you can use the following SQL query:
+
+SELECT * FROM products LIMIT 10 OFFSET 10;
+
+
+
+This query will skip the first 10 rows and return the next 10 rows, which correspond to the products on the second page.
+
+In a web application, you would typically use a programming language such as PHP or Python to dynamically generate the 
+SQL query based on the users input and display the results on the web page.
+The user interface would typically include links or buttons to navigate to the next or previous pages of the result set,
+and to jump to specific pages.
+
+
+
 
 
 
