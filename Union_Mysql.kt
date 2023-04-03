@@ -1,4 +1,5 @@
 UNION  is used to take data from one table and combine it with the first table,if they have same number of columns, to come up with just one table.
+IN OREDER TO  FOR TO WORK, THE TABLES MUST HAVE SAME NUMBER OF COLUMNS.
 Union does not allow for repetions odf same date.If there is same record in the two tables ,then only one is choosen and the other is discarded.
 UNION ALL - allows for duplicates in the final data set
 e.g SLECT first_name, last_name FROM employyes UNION SELECT first_name ,last_name FROM customers
