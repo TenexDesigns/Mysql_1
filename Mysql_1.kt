@@ -625,7 +625,7 @@ This above here is prohibited. Since this will ruin the established connection b
 
 
 That is a foreign key. It is a priamry key of one table found on another table.and when we use that foreign key in another table, we refer to it as a foreign key.
-
+e
 
 
 
