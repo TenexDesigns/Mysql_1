@@ -72,6 +72,11 @@ This will execute the get_customer_orders stored procedure and return all orders
 
 Stored procedures can be very useful in many scenarios, such as:
 
+--- reduces network traffic
+--- Increases performance
+--- Secure , admin  can grant perission to use
+--- Increase memeory usage of  every connection
+
 Reducing network traffic by sending complex SQL queries to the server in a single call instead of multiple calls.
 Enhancing security by granting appropriate permissions to execute stored procedures instead of direct table access.
 Improving performance by pre-compiling and caching frequently used SQL statements.
