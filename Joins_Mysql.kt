@@ -18,7 +18,8 @@ The syntax for a JOIN in MySQL is:
 
 SELECT column1, column2, FROM table1 JOIN table2 ON table1.column = table2.column;
 
-Where column1, column2, ... are the columns you want to retrieve from the tables table1 and table2, and ON table1.column = table2.column specifies the condition for the join.
+Where column1, column2, ... are the columns you want to retrieve from the tables table1 and table2, and ON table1.column = table2.column specifies
+the condition for the join.
 
 
 
@@ -33,7 +34,8 @@ SELECT transaction_id,amount,first_name,last_name FROM transactions INNER JOIN c
 
 LEFT  JOIN
 ____________________________________________________________
-With left join ,we are going to dispaly everything ftm the left table.however if there is matching customer id,pull any relevant data from the right even if ther is no data to be displayed
+With left join ,we are going to dispaly everything ftm the left table.however if there is matching customer id,pull any relevant data
+from the right even if ther is no data to be displayed
 LET US SEEE HOW AN LEFT JOIN IS DONE
 
 SELECT transaction_id,amount,first_name,last_name FROM transactions LEFT JOIN customers ON transactions.customer_id = customer_id;
@@ -41,7 +43,8 @@ SELECT transaction_id,amount,first_name,last_name FROM transactions LEFT JOIN cu
 
 RIGHT  JOIN
 ____________________________________________________________
-With right join ,we are going to dispaly everything ftm the right table .however if there is matching customer id,pull any relevant data from the left even if ther is no data to be displayed
+With right join ,we are going to dispaly everything ftm the right table .however if there is matching customer id,pull any relevant data 
+from the left even if ther is no data to be displayed
 LET US SEEE HOW AN LEFT JOIN IS DONE
 
 SELECT transaction_id,amount,first_name,last_name FROM transactions RIGHT JOIN customers ON transactions.customer_id = customer_id;
